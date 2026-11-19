@@ -3,12 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { MBTITypeInfo, getTypeInfo } from "@/data/types";
+import CharacterViewer from "@/components/3d/CharacterViewer";
 
 interface ResultContentProps {
   info: MBTITypeInfo;
 }
 
-// 찌니 MBTI 상세 결과 컴포넌트 (클라이언트 인터랙션: 주소 복사 공유 등 포함)
+// 찌니 MBTI 상세 결과 컴포넌트: 3D 인터랙티브 캐릭터 및 성격 상세 분석 제공
 export default function ResultContent({ info }: ResultContentProps) {
   // 주소 복사 완료 알림 표시 여부 상태
   const [copied, setCopied] = useState<boolean>(false);
@@ -25,7 +26,6 @@ export default function ResultContent({ info }: ResultContentProps) {
         setTimeout(() => setCopied(false), 2500);
       }
     } catch {
-      // 클립보드 API가 차단된 환경일 경우 fallback 알림
       alert("주소를 복사했습니다: " + window.location.href);
     }
   };
@@ -39,7 +39,7 @@ export default function ResultContent({ info }: ResultContentProps) {
       />
 
       {/* 1. 상단 타이틀 영역: '당신의 유형은' + 유형 코드 + 한글 별명 */}
-      <div className="w-full flex flex-col items-center text-center pt-2 mb-6">
+      <div className="w-full flex flex-col items-center text-center pt-2 mb-4">
         <span className="px-3.5 py-1 text-xs font-semibold text-slate-500 bg-white/80 border border-slate-200/60 rounded-full mb-3 shadow-xs">
           당신의 유형은
         </span>
@@ -58,39 +58,30 @@ export default function ResultContent({ info }: ResultContentProps) {
         </h2>
       </div>
 
-      {/* 2. 캐릭터 자리 (대표 색상 배경의 둥근 상자 + 캐릭터 이름) */}
+      {/* 2. 3D 인터랙티브 캐릭터 영역 */}
       <div
-        className="w-full rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-center text-center border shadow-inner mb-6 relative overflow-hidden transition-all"
+        className="w-full rounded-3xl p-3 sm:p-4 flex flex-col items-center justify-center text-center border shadow-inner mb-6 relative overflow-hidden transition-all"
         style={{
-          backgroundColor: `${info.color}18`,
+          backgroundColor: `${info.color}15`,
           borderColor: `${info.color}40`,
         }}
       >
-        {/* 캐릭터 아이콘 원형 박스 */}
-        <div
-          className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mb-3 shadow-sm"
-          style={{ backgroundColor: `${info.color}35` }}
-        >
-          🐾
+        {/* 3D 캔버스 뷰어 (캐릭터가 돋보이도록 시원한 높이 적용) */}
+        <div className="w-full h-[290px] sm:h-[320px] relative">
+          <CharacterViewer typeCode={info.code} />
         </div>
 
-        {/* 캐릭터 이름 */}
-        <h3 className="text-lg sm:text-xl font-extrabold text-slate-800 mb-1">
-          {info.character.name}
-        </h3>
-
-        {/* 동물 종류 표시 */}
-        <span className="text-xs font-semibold text-slate-500 mb-3">
-          ({info.character.animal})
-        </span>
-
-        {/* 3D 캐릭터 도입 예정 안내 뱃지 */}
-        <span
-          className="px-3 py-1 text-[11px] font-medium rounded-full bg-white/80 shadow-xs border text-slate-600"
-          style={{ borderColor: `${info.color}50` }}
-        >
-          ✨ 귀여운 3D 캐릭터가 다음 단계에서 찾아옵니다!
-        </span>
+        {/* 캐릭터 이름 및 힌트 라벨 */}
+        <div className="mt-2 text-center">
+          <h3 className="text-base sm:text-lg font-extrabold text-slate-800 flex items-center justify-center gap-1.5">
+            <span>🐾</span>
+            <span>{info.character.name}</span>
+            <span className="text-xs font-medium text-slate-400">({info.character.animal})</span>
+          </h3>
+          <span className="text-[11px] text-slate-400 mt-1 block">
+            💡 드래그하여 360도로 돌려보거나 탭하여 점프시켜 보세요!
+          </span>
+        </div>
       </div>
 
       {/* 3. 한 줄 소개 및 성격 상세 설명 카드 */}
@@ -154,7 +145,7 @@ export default function ResultContent({ info }: ResultContentProps) {
         </div>
       </div>
 
-      {/* 5. 잘 맞는 유형 2개 (누르면 해당 결과 페이지로 바로 이동) */}
+      {/* 5. 잘 맞는 유형 2개 */}
       <div className="w-full bg-white/95 border border-slate-100 rounded-3xl p-5 shadow-sm mb-6">
         <h4 className="text-xs font-bold text-slate-700 flex items-center gap-1.5 mb-3">
           <span>💖</span>
@@ -195,7 +186,6 @@ export default function ResultContent({ info }: ResultContentProps) {
 
       {/* 6. 하단 버튼 2개: "다시 검사하기", "결과 공유하기" */}
       <div className="w-full space-y-3 pt-2 pb-4">
-        {/* 결과 공유하기 버튼 */}
         <button
           onClick={handleShare}
           className="w-full py-4 px-6 text-center text-sm sm:text-base font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 rounded-2xl shadow-sm hover:shadow active:scale-[0.98] transition-all flex items-center justify-center gap-2"
@@ -204,7 +194,6 @@ export default function ResultContent({ info }: ResultContentProps) {
           <span>결과 공유하기</span>
         </button>
 
-        {/* 다시 검사하기 버튼 */}
         <Link
           href="/test"
           className="block w-full py-4 px-6 text-center text-sm sm:text-base font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 rounded-2xl shadow-lg shadow-emerald-400/30 active:scale-[0.98] transition-all"
