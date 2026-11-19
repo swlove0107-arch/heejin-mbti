@@ -12,7 +12,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 # 프로젝트 작업 규칙
 
 ## [서비스 소개]
-- **이름**: 몽글 MBTI
+- **이름**: 찌니 MBTI
 - 12개 질문에 답하면 16가지 성격 유형 중 하나를 알려주는 검사 서비스
 - 유형마다 3D 동물 캐릭터가 있다
 - 회원은 검사 결과를 저장하고 마이페이지에서 다시 볼 수 있다
