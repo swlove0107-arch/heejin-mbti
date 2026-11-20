@@ -75,7 +75,7 @@ export default function TypesPage() {
             {currentInfo.code}
           </span>
           <span className="text-sm font-bold text-slate-700">
-            "{currentInfo.nickname}"
+            &ldquo;{currentInfo.nickname}&rdquo;
           </span>
         </div>
 

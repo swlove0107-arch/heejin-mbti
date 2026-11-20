@@ -10,10 +10,28 @@ const notoSansKr = Noto_Sans_KR({
   display: "swap",
 });
 
-// 웹 페이지의 기본 메타데이터 설정 (검색엔진 및 브라우저 탭 제목)
+// 웹 페이지의 기본 메타데이터 및 Open Graph 설정
 export const metadata: Metadata = {
-  title: "찌니 MBTI - 나의 성격 유형 알아보기",
-  description: "12개 질문으로 알아보는 16가지 성격 유형과 귀여운 3D 동물 캐릭터",
+  title: {
+    default: "찌니 MBTI - 16가지 동물 캐릭터 성격 유형 검사",
+    template: "%s | 찌니 MBTI",
+  },
+  description:
+    "12개 질문에 답하면 16가지 성격 유형 중 하나와 귀여운 3D 동물 캐릭터를 알려드려요!",
+  openGraph: {
+    title: "찌니 MBTI - 16가지 동물 캐릭터 성격 유형 검사",
+    description:
+      "12개 질문에 답하면 16가지 성격 유형 중 하나와 귀여운 3D 동물 캐릭터를 알려드려요!",
+    siteName: "찌니 MBTI",
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "찌니 MBTI - 16가지 동물 캐릭터 성격 유형 검사",
+    description:
+      "12개 질문에 답하면 16가지 성격 유형 중 하나와 귀여운 3D 동물 캐릭터를 알려드려요!",
+  },
 };
 
 export default function RootLayout({

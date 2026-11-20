@@ -175,7 +175,7 @@ export default function StatsPage() {
                   {topType.characterName} ({topType.animal})
                 </h3>
                 <p className="text-xs text-slate-500 mt-0.5 font-medium">
-                  "{topType.nickname}"
+                  &ldquo;{topType.nickname}&rdquo;
                 </p>
                 <div className="mt-2 text-xs font-bold text-emerald-600 bg-white/80 px-3 py-1 rounded-full border border-emerald-100 inline-block">
                   총 {topType.count}명 ({topType.percentage.toFixed(1)}%)

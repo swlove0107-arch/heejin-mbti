@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { mbtiTypes, getTypeInfo } from "@/data/types";
 import ResultContent from "./ResultContent";
@@ -15,6 +16,43 @@ interface ResultPageProps {
   params: Promise<{
     type: string;
   }>;
+}
+
+// 각 결과 페이지별 맞춤형 메타데이터(Title, Description, Open Graph) 동적 생성
+export async function generateMetadata({
+  params,
+}: ResultPageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const upperType = (resolvedParams.type || "").toUpperCase();
+  const typeInfo = getTypeInfo(upperType);
+
+  if (!typeInfo) {
+    return {
+      title: "알 수 없는 유형 | 찌니 MBTI",
+      description: "존재하지 않거나 잘못된 성격 유형 결과입니다.",
+    };
+  }
+
+  // 예: "ENFP 반짝이는 아이디어 뱅크 | 찌니 MBTI"
+  const title = `${typeInfo.code} ${typeInfo.nickname} | 찌니 MBTI`;
+  const description = `${typeInfo.summary} - ${typeInfo.character.name}(${typeInfo.character.animal}) 캐릭터와 성격 분석을 확인해보세요.`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      siteName: "찌니 MBTI",
+      locale: "ko_KR",
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
 }
 
 // 찌니 MBTI 검사 결과 상세 페이지 (/result/[type])

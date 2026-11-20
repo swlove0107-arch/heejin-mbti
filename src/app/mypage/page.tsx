@@ -178,7 +178,7 @@ export default function MyPage() {
                   {latestInfo.character.name} ({latestInfo.character.animal})
                 </h3>
                 <p className="text-xs text-slate-500 mt-0.5 font-medium">
-                  "{latestInfo.nickname}"
+                  &ldquo;{latestInfo.nickname}&rdquo;
                 </p>
               </div>
             </div>
@@ -224,7 +224,7 @@ export default function MyPage() {
                       {/* 날짜와 별명 */}
                       <div className="flex flex-col min-w-0">
                         <span className="text-xs font-bold text-slate-800 truncate">
-                          "{nicknameStr}"
+                          &ldquo;{nicknameStr}&rdquo;
                         </span>
                         <span className="text-[11px] text-slate-400">
                           {formatDate(item.created_at)}

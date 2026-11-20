@@ -104,7 +104,7 @@ export default function ResultContent({ info }: ResultContentProps) {
 
         {/* 새로 창작한 한글 별명 */}
         <h2 className="text-lg sm:text-xl font-bold text-slate-800 break-keep">
-          "{info.nickname}"
+          &ldquo;{info.nickname}&rdquo;
         </h2>
       </div>
 
