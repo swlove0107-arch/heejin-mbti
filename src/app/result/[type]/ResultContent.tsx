@@ -1,32 +1,82 @@
+/**
+ * ResultContent — MBTI 상세 결과 페이지 컴포넌트
+ *
+ * - 3D 인터랙티브 캐릭터 및 성격 상세 분석 제공
+ * - "내 기록에 저장" 기능: 로그인 회원은 DB에 저장, 비로그인은 로그인 페이지로 안내
+ * - "결과 공유하기" (클립보드 주소 복사)
+ * - "다시 검사하기" (/test 이동)
+ */
 "use client";
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { MBTITypeInfo, getTypeInfo } from "@/data/types";
 import CharacterViewer from "@/components/3d/CharacterViewer";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/lib/supabase";
 
 interface ResultContentProps {
   info: MBTITypeInfo;
 }
 
-// 찌니 MBTI 상세 결과 컴포넌트: 3D 인터랙티브 캐릭터 및 성격 상세 분석 제공
 export default function ResultContent({ info }: ResultContentProps) {
+  const { user } = useAuth();
+  const router = useRouter();
+
   // 주소 복사 완료 알림 표시 여부 상태
   const [copied, setCopied] = useState<boolean>(false);
 
+  // 결과 저장 상태 관리
+  const [isSaved, setIsSaved] = useState<boolean>(false);
+  const [isSaving, setIsSaving] = useState<boolean>(false);
+  const [saveError, setSaveError] = useState<string>("");
+
   /**
-   * 결과 공유하기: 현재 URL을 클립보드에 복사하고 안내 메시지를 띄우는 함수
+   * 결과 공유하기: 현재 URL을 클립보드에 복사
    */
   const handleShare = async () => {
     try {
       if (typeof window !== "undefined") {
         await navigator.clipboard.writeText(window.location.href);
         setCopied(true);
-        // 2.5초 후 복사 완료 안내 숨김
         setTimeout(() => setCopied(false), 2500);
       }
     } catch {
       alert("주소를 복사했습니다: " + window.location.href);
+    }
+  };
+
+  /**
+   * 내 기록에 저장하기:
+   * - 로그인 상태: test_results 테이블에 mbti_type 저장 (user_id, created_at 은 DB 기본값)
+   * - 로그아웃 상태: /login?next=/result/유형코드 로 이동
+   */
+  const handleSaveResult = async () => {
+    // 1) 비로그인 상태일 때는 로그인 후 돌아올 수 있도록 next 파라미터와 함께 이동
+    if (!user) {
+      router.push(`/login?next=/result/${info.code}`);
+      return;
+    }
+
+    // 2) 로그인 상태면 저장 진행
+    setIsSaving(true);
+    setSaveError("");
+
+    try {
+      const { error } = await supabase.from("test_results").insert({
+        mbti_type: info.code,
+      });
+
+      if (error) {
+        setSaveError("결과를 저장하지 못했어요: " + error.message);
+      } else {
+        setIsSaved(true);
+      }
+    } catch {
+      setSaveError("네트워크 오류가 발생했어요. 잠시 후 다시 시도해 주세요.");
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -66,7 +116,7 @@ export default function ResultContent({ info }: ResultContentProps) {
           borderColor: `${info.color}40`,
         }}
       >
-        {/* 3D 캔버스 뷰어 (캐릭터가 돋보이도록 시원한 높이 적용) */}
+        {/* 3D 캔버스 뷰어 */}
         <div className="w-full h-[290px] sm:h-[320px] relative">
           <CharacterViewer typeCode={info.code} />
         </div>
@@ -86,7 +136,6 @@ export default function ResultContent({ info }: ResultContentProps) {
 
       {/* 3. 한 줄 소개 및 성격 상세 설명 카드 */}
       <div className="w-full bg-white/95 border border-slate-100 rounded-3xl p-5 sm:p-6 shadow-sm mb-5">
-        {/* 한 줄 소개 강조 인용구 */}
         <div
           className="p-3.5 rounded-2xl mb-4 text-center font-bold text-sm sm:text-base border-l-4 break-keep"
           style={{
@@ -98,7 +147,6 @@ export default function ResultContent({ info }: ResultContentProps) {
           💡 {info.summary}
         </div>
 
-        {/* 3~4문장의 성격 설명 본문 */}
         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed break-keep">
           {info.description}
         </p>
@@ -106,7 +154,7 @@ export default function ResultContent({ info }: ResultContentProps) {
 
       {/* 4. 강점 목록 & 조심할 점 목록 */}
       <div className="w-full space-y-4 mb-6">
-        {/* 4-1. 강점 카드 */}
+        {/* 강점 카드 */}
         <div className="bg-white/90 border border-emerald-100/80 rounded-3xl p-5 shadow-sm">
           <h4 className="text-xs font-bold text-emerald-700 flex items-center gap-1.5 mb-3">
             <span>✨</span>
@@ -125,7 +173,7 @@ export default function ResultContent({ info }: ResultContentProps) {
           </ul>
         </div>
 
-        {/* 4-2. 조심할 점 카드 */}
+        {/* 조심할 점 카드 */}
         <div className="bg-white/90 border border-amber-100/80 rounded-3xl p-5 shadow-sm">
           <h4 className="text-xs font-bold text-amber-700 flex items-center gap-1.5 mb-3">
             <span>💡</span>
@@ -184,8 +232,41 @@ export default function ResultContent({ info }: ResultContentProps) {
         </div>
       </div>
 
-      {/* 6. 하단 버튼 2개: "다시 검사하기", "결과 공유하기" */}
+      {/* 6. 하단 액션 버튼 영역 */}
       <div className="w-full space-y-3 pt-2 pb-4">
+        {/* 내 기록에 저장 버튼 */}
+        <button
+          onClick={handleSaveResult}
+          disabled={isSaved || isSaving}
+          className={`w-full py-4 px-6 text-center text-sm sm:text-base font-bold rounded-2xl shadow-sm transition-all flex items-center justify-center gap-2 ${
+            isSaved
+              ? "bg-emerald-50 text-emerald-700 border border-emerald-200 cursor-default"
+              : "bg-emerald-500 text-white hover:bg-emerald-600 shadow-emerald-400/30 shadow-md active:scale-[0.98]"
+          } disabled:opacity-80`}
+        >
+          {isSaved ? (
+            <>
+              <span>✓</span>
+              <span>내 기록에 저장했어요</span>
+            </>
+          ) : isSaving ? (
+            <span>저장하는 중...</span>
+          ) : (
+            <>
+              <span>💾</span>
+              <span>내 기록에 저장</span>
+            </>
+          )}
+        </button>
+
+        {/* 저장 실패 시 에러 안내 */}
+        {saveError && (
+          <p className="text-xs text-red-500 font-medium text-center bg-red-50 py-2 px-3 rounded-xl border border-red-100">
+            {saveError}
+          </p>
+        )}
+
+        {/* 결과 공유하기 */}
         <button
           onClick={handleShare}
           className="w-full py-4 px-6 text-center text-sm sm:text-base font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 rounded-2xl shadow-sm hover:shadow active:scale-[0.98] transition-all flex items-center justify-center gap-2"
@@ -194,9 +275,10 @@ export default function ResultContent({ info }: ResultContentProps) {
           <span>결과 공유하기</span>
         </button>
 
+        {/* 다시 검사하기 */}
         <Link
           href="/test"
-          className="block w-full py-4 px-6 text-center text-sm sm:text-base font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 rounded-2xl shadow-lg shadow-emerald-400/30 active:scale-[0.98] transition-all"
+          className="block w-full py-4 px-6 text-center text-sm sm:text-base font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-2xl active:scale-[0.98] transition-all"
         >
           다시 검사하기
         </Link>
