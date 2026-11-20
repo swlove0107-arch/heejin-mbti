@@ -10,8 +10,13 @@
 import { createClient } from "@supabase/supabase-js";
 
 // 환경 변수에서 Supabase 접속 정보를 가져온다
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabasePublishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!;
+const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+const rawKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || "";
+
+// 환경변수가 플레이스홀더이거나 유효한 URL이 아닐 때 정적 빌드(prerendering) 실패를 방지하기 위한 대체값
+const isValidUrl = rawUrl.startsWith("http://") || rawUrl.startsWith("https://");
+const supabaseUrl = isValidUrl ? rawUrl : "https://placeholder-project.supabase.co";
+const supabasePublishableKey = rawKey && !rawKey.includes("여기에") ? rawKey : "placeholder-key";
 
 // Supabase 클라이언트를 하나만 만들어서 내보낸다
 export const supabase = createClient(supabaseUrl, supabasePublishableKey);
