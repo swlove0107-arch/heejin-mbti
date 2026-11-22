@@ -3,13 +3,10 @@ import Link from "next/link";
 import { mbtiTypes, getTypeInfo } from "@/data/types";
 import ResultContent from "./ResultContent";
 
-// 16가지 전체 MBTI 유형에 대해 대소문자 모두 사전 정적 생성(Static Pre-rendering) 설정
+// 16가지 전체 MBTI 유형 사전 정적 생성(Static Pre-rendering) 설정
 export function generateStaticParams() {
   const codes = Object.keys(mbtiTypes);
-  return [
-    ...codes.map((code) => ({ type: code })),
-    ...codes.map((code) => ({ type: code.toLowerCase() })),
-  ];
+  return codes.map((code) => ({ type: code }));
 }
 
 interface ResultPageProps {
