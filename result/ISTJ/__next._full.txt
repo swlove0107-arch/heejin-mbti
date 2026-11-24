@@ -1,0 +1,36 @@
+1:"$Sreact.fragment"
+2:"static/chunks/44530001-1169a7eb4c494055.js"
+3:"static/chunks/500-fc3b64d9ff4a32a7.js"
+4:"static/chunks/765-2a3e7746bfeab6da.js"
+5:"static/chunks/app/layout-3e42f34729a4a8ff.js"
+6:I[4641,["730","$2","500","$3","765","$4","177","$5"],"default"]
+7:I[7121,[],""]
+8:I[4581,[],""]
+9:"static/chunks/bd904a5c-56e65ed4abb36c15.js"
+a:"static/chunks/e49654ac-d18991dfbe3404b7.js"
+b:"static/chunks/b536a0f1-f06e169bf8dc9367.js"
+c:"static/chunks/357-3a25915254ef841f.js"
+d:"static/chunks/419-3c6934b1ae7b14fa.js"
+e:"static/chunks/app/result/%5Btype%5D/page-95732e4575d12143.js"
+f:I[8500,["730","$2","831","$9","970","$a","367","$b","500","$3","765","$4","357","$c","419","$d","199","$e"],""]
+15:I[484,[],"OutletBoundary"]
+16:"$Sreact.suspense"
+18:"ViewportBoundary"
+19:I[484,[],"$18"]
+1b:"MetadataBoundary"
+1c:I[484,[],"$1b"]
+1e:I[7123,[],"default",1]
+:HL["/heejin-mbti/_next/static/css/ad552f95c057be19.css","style"]
+:HL["/heejin-mbti/_next/static/css/b50fa13dc5078de1.css","style"]
+11:X
+13:[["children",{"s":"__PAGE__","h":512,"d":{"r":["$","$1","c",{"children":["$L14",null,["$","$L15",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@17"}]}]]}],"p":false,"v":null}}]]
+12:[["children",{"s":{"n":"type","t":"d","k":"ISTJ","s":[]},"h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$11"},"c":"$Q13"}]]
+10:[["children",{"s":"result","h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$11"},"c":"$Q12"}]]
+0:{"P":null,"c":["","result","ISTJ"],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/heejin-mbti/_next/static/css/ad552f95c057be19.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/heejin-mbti/_next/static/css/b50fa13dc5078de1.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"ko","className":"__className_09098d","children":["$","body",null,{"className":"min-h-dvh bg-gradient-to-br from-pink-100/80 via-rose-50 to-pink-100/70 text-slate-800 flex justify-center","children":["$","$L6",null,{"children":["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"flex-1 flex flex-col items-center justify-center text-center py-16 px-4","children":[["$","div",null,{"className":"w-24 h-24 rounded-3xl bg-pink-100/80 border border-pink-200/60 flex items-center justify-center text-5xl mb-6 shadow-inner animate-pulse","children":"🐾"}],["$","span",null,{"className":"px-3.5 py-1 text-xs font-bold text-pink-700 bg-pink-50 border border-pink-200/60 rounded-full mb-3","children":"404 NOT FOUND"}],["$","h1",null,{"className":"text-2xl sm:text-3xl font-black text-slate-800 tracking-tight mb-2","children":"길을 잃었어요!"}],["$","p",null,{"className":"text-xs sm:text-sm text-slate-500 mb-8 max-w-[280px] leading-relaxed break-keep","children":"존재하지 않는 페이지이거나 주소가 잘못 입력되었어요. 귀여운 동물 친구들이 있는 홈으로 돌아가 볼까요?"}],["$","div",null,{"className":"w-full max-w-xs space-y-3","children":[["$","$Lf",null,{"href":"/","className":"block w-full py-3.5 px-6 text-center text-sm font-bold text-white bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 rounded-2xl shadow-lg shadow-pink-400/30 active:scale-[0.98] transition-all","children":"홈으로 가기"}],["$","$Lf",null,{"href":"/test","className":"block w-full py-3.5 px-6 text-center text-sm font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-2xl active:scale-[0.98] transition-all","children":"검사 시작하기"}]]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]]}],"p":false,"v":null},"c":"$Q10"},"h":{"r":["$","$1","h",{"children":[null,["$","$L19",null,{"children":"$L1a"}],["$","$L1c",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$16",null,{"name":"Next.Metadata","children":"$L1d"}]}],null]}],null]}],"p":false,"v":null}},"m":"$undefined","G":["$1e",[]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"AoMbgEkUC9mkgw8lzXiym"}
+1f:I[9420,["730","$2","831","$9","970","$a","367","$b","500","$3","765","$4","357","$c","419","$d","199","$e"],"default"]
+11:C
+14:["$","$L1f",null,{"info":{"code":"ISTJ","nickname":"약속을 지키는 든든한 바위","summary":"성실함과 우직한 끈기로 맡은 바를 완벽하게 해내는 믿음직한 파트너예요.","description":"한 번 맡은 일은 끝까지 빈틈없이 완수해야 마음이 편안한 책임감의 표본이에요. 충동적으로 결정하기보다는 객관적인 사실과 경험을 바탕으로 신중하게 움직여요. 말수는 적어도 곁에서 묵묵하게 가장 큰 힘이 되어주는 든든한 존재예요.","strengths":["철저한 정확성과 성실한 실행력","끝까지 완수해내는 끈기와 강한 책임감","현실적이고 신뢰할 수 있는 문제 분석력"],"cautions":["갑작스러운 일정 변경이나 돌발 상황에 큰 스트레스를 받아요.","정해진 원칙에 얽매여 유연한 융통성을 놓치기 쉬워요."],"compatibleTypes":["ESFP","ESTP"],"color":"#94a3b8","character":{"animal":"거북이","name":"우직한 거북 수호관"}}}]
+1a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+20:I[6869,[],"IconMark"]
+17:null
+1d:[["$","title","0",{"children":"ISTJ 약속을 지키는 든든한 바위 | 희진 MBTI | 희진 MBTI"}],["$","meta","1",{"name":"description","content":"성실함과 우직한 끈기로 맡은 바를 완벽하게 해내는 믿음직한 파트너예요. - 우직한 거북 수호관(거북이) 캐릭터와 성격 분석을 확인해보세요."}],["$","meta","2",{"property":"og:title","content":"ISTJ 약속을 지키는 든든한 바위 | 희진 MBTI"}],["$","meta","3",{"property":"og:description","content":"성실함과 우직한 끈기로 맡은 바를 완벽하게 해내는 믿음직한 파트너예요. - 우직한 거북 수호관(거북이) 캐릭터와 성격 분석을 확인해보세요."}],["$","meta","4",{"property":"og:site_name","content":"희진 MBTI"}],["$","meta","5",{"property":"og:locale","content":"ko_KR"}],["$","meta","6",{"property":"og:type","content":"article"}],["$","meta","7",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","8",{"name":"twitter:title","content":"ISTJ 약속을 지키는 든든한 바위 | 희진 MBTI"}],["$","meta","9",{"name":"twitter:description","content":"성실함과 우직한 끈기로 맡은 바를 완벽하게 해내는 믿음직한 파트너예요. - 우직한 거북 수호관(거북이) 캐릭터와 성격 분석을 확인해보세요."}],["$","link","10",{"rel":"icon","href":"/heejin-mbti/favicon.ico?7161ee1d105bc9c7","type":"image/x-icon","sizes":"48x48"}],["$","$L20","11",{}]]
