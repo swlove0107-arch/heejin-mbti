@@ -25,13 +25,13 @@ export async function generateMetadata({
 
   if (!typeInfo) {
     return {
-      title: "알 수 없는 유형 | 찌니 MBTI",
+      title: "알 수 없는 유형 | 희진 MBTI",
       description: "존재하지 않거나 잘못된 성격 유형 결과입니다.",
     };
   }
 
-  // 예: "ENFP 반짝이는 아이디어 뱅크 | 찌니 MBTI"
-  const title = `${typeInfo.code} ${typeInfo.nickname} | 찌니 MBTI`;
+  // 예: "ENFP 반짝이는 아이디어 뱅크 | 희진 MBTI"
+  const title = `${typeInfo.code} ${typeInfo.nickname} | 희진 MBTI`;
   const description = `${typeInfo.summary} - ${typeInfo.character.name}(${typeInfo.character.animal}) 캐릭터와 성격 분석을 확인해보세요.`;
 
   return {
@@ -40,7 +40,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      siteName: "찌니 MBTI",
+      siteName: "희진 MBTI",
       locale: "ko_KR",
       type: "article",
     },
@@ -52,7 +52,7 @@ export async function generateMetadata({
   };
 }
 
-// 찌니 MBTI 검사 결과 상세 페이지 (/result/[type])
+// 희진 MBTI 검사 결과 상세 페이지 (/result/[type])
 export default async function ResultPage({ params }: ResultPageProps) {
   // Next.js 15+ 규격에 맞추어 params 비동기 해석
   const resolvedParams = await params;
@@ -84,7 +84,7 @@ export default async function ResultPage({ params }: ResultPageProps) {
         {/* 홈으로 돌아가기 버튼 */}
         <Link
           href="/"
-          className="w-full max-w-[240px] py-4 px-6 text-center text-sm font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 rounded-2xl shadow-lg shadow-emerald-400/30 active:scale-[0.98] transition-all"
+          className="w-full max-w-[240px] py-4 px-6 text-center text-sm font-bold text-white bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 rounded-2xl shadow-lg shadow-pink-400/30 active:scale-[0.98] transition-all"
         >
           홈으로 가기
         </Link>

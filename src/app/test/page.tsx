@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { questions, TraitType } from "@/data/questions";
 import { calculateMBTI } from "@/lib/mbti";
 
-// 찌니 MBTI 검사 진행 화면 (/test)
+// 희진 MBTI 검사 진행 화면 (/test)
 export default function TestPage() {
   const router = useRouter();
 
@@ -56,18 +56,18 @@ export default function TestPage() {
       {/* 1. 상단: 진행 상황 표시 (진행 숫자 및 게이지 바) */}
       <div className="w-full mb-6">
         <div className="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2 px-1">
-          <span className="text-emerald-700 bg-emerald-100/70 px-2.5 py-0.5 rounded-full">
+          <span className="text-pink-700 bg-pink-100/80 px-2.5 py-0.5 rounded-full font-bold">
             질문 {currentQuestion.id}
           </span>
-          <span className="font-bold text-emerald-800">
+          <span className="font-bold text-pink-700">
             {currentIndex + 1} <span className="text-slate-400 font-normal">/ {totalQuestions}</span>
           </span>
         </div>
 
         {/* 진행 게이지 막대 */}
-        <div className="w-full h-2.5 bg-emerald-100/60 rounded-full overflow-hidden shadow-inner">
+        <div className="w-full h-2.5 bg-pink-100/70 rounded-full overflow-hidden shadow-inner">
           <div
-            className="h-full bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full transition-all duration-300 ease-out"
+            className="h-full bg-gradient-to-r from-pink-500 to-rose-500 rounded-full transition-all duration-300 ease-out"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
@@ -75,9 +75,9 @@ export default function TestPage() {
 
       {/* 2. 중단: 질문 내용 카드 */}
       <div className="my-auto py-4">
-        <div className="bg-white/90 border border-emerald-100/80 rounded-3xl p-6 sm:p-7 shadow-sm text-center mb-6">
+        <div className="bg-white/90 border border-pink-200/80 rounded-3xl p-6 sm:p-7 shadow-xs text-center mb-6">
           <span className="inline-block text-3xl mb-3">💬</span>
-          <h2 className="text-lg sm:text-xl font-bold text-slate-800 leading-snug break-keep">
+          <h2 className="text-lg sm:text-xl font-extrabold text-slate-800 leading-snug break-keep">
             {currentQuestion.question}
           </h2>
         </div>
@@ -91,10 +91,10 @@ export default function TestPage() {
               <button
                 key={index}
                 onClick={() => handleSelectChoice(choice.type)}
-                className={`w-full min-h-[76px] p-4 text-left sm:text-center text-sm sm:text-base font-semibold rounded-2xl border transition-all active:scale-[0.98] shadow-sm flex items-center justify-center leading-relaxed break-keep ${
+                className={`w-full min-h-[76px] p-4 text-left sm:text-center text-sm sm:text-base font-semibold rounded-2xl border transition-all active:scale-[0.98] shadow-xs flex items-center justify-center leading-relaxed break-keep ${
                   isSelected
-                    ? "bg-emerald-500 text-white border-emerald-500 shadow-md shadow-emerald-200/50"
-                    : "bg-white/95 text-slate-700 border-emerald-100/80 hover:bg-emerald-50/60 hover:border-emerald-300/80 hover:shadow-md"
+                    ? "bg-gradient-to-r from-pink-500 to-rose-500 text-white border-pink-400 shadow-md shadow-pink-200/50"
+                    : "bg-white/95 text-slate-700 border-pink-100/80 hover:bg-pink-50/70 hover:border-pink-300/80 hover:shadow-xs"
                 }`}
               >
                 {choice.text}
@@ -109,7 +109,7 @@ export default function TestPage() {
         {currentIndex > 0 ? (
           <button
             onClick={handlePrev}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-emerald-700 px-3 py-2 rounded-xl hover:bg-emerald-50 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-pink-700 px-3 py-2 rounded-xl hover:bg-pink-50 transition-colors"
           >
             <span>←</span>
             <span>이전 질문으로</span>

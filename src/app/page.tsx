@@ -25,7 +25,7 @@ const ROTATING_CODES = [
   "ENFJ", // 강아지
 ];
 
-// 찌니 MBTI 첫 화면 (홈 화면: /)
+// 희진 MBTI 첫 화면 (홈 화면: /)
 export default function HomePage() {
   // 3초마다 바뀔 현재 캐릭터 인덱스 상태
   const [currentIdx, setCurrentIdx] = useState<number>(0);
@@ -43,112 +43,117 @@ export default function HomePage() {
   const currentInfo = mbtiTypes[currentCode] || mbtiTypes.ISFJ;
 
   return (
-    <div className="flex-1 flex flex-col justify-between items-center text-center py-2">
-      {/* 1. 상단: 타이틀 및 한 줄 소개 문구 */}
-      <div className="w-full flex flex-col items-center pt-1 mb-3">
-        {/* 한 줄 소개 뱃지 */}
-        <span className="px-3.5 py-1 text-xs font-semibold text-emerald-700 bg-emerald-100/70 rounded-full mb-2">
-          🐾 12가지 질문으로 만나는 3D 동물 친구
-        </span>
+    <div className="flex flex-1 flex-col justify-between gap-6 rounded-3xl bg-pink-100/45 p-3.5">
+      {/* 1. 상단 히어로 카드: 3D 캐릭터 쇼케이스 & 검사 시작 */}
+      <section className="relative overflow-hidden rounded-3xl border border-pink-200/80 bg-gradient-to-br from-pink-100 via-rose-100/90 to-pink-200/75 p-6 text-center shadow-[0_12px_30px_rgba(244,114,182,0.2)]">
+        {/* 상단 뱃지 */}
+        <div className="mx-auto mb-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3.5 py-1 text-xs font-bold text-pink-600 shadow-2xs">
+          <span aria-hidden="true">✨</span>
+          <span>나와 닮은 동물 친구 찾기</span>
+        </div>
 
-        {/* 큰 메인 제목 */}
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight mb-1.5">
+        {/* 메인 타이틀 */}
+        <h1 className="text-[28px] leading-tight font-extrabold tracking-tight text-slate-800">
           나는 어떤 유형일까?
         </h1>
 
-        {/* 소개 문구 */}
-        <p className="text-xs sm:text-sm text-slate-500 max-w-[290px] leading-relaxed">
-          간단한 질문에 답하고 나를 쏙 빼닮은 포근한 3D 캐릭터와 성격 분석을 만나보세요!
+        {/* 서브 설명 문구 */}
+        <p className="mt-2 text-sm leading-relaxed font-medium text-slate-700 break-keep">
+          12개의 질문으로 나의 성격 유형과 찰떡궁합인 3D 동물 캐릭터를 알아보세요!
         </p>
-      </div>
 
-      {/* 2. 제목 아래: 3D 캐릭터 쇼케이스 (3초마다 다른 유형 동물로 자동 변경) */}
-      <div
-        className="w-full rounded-3xl p-3 sm:p-4 border shadow-xl mb-5 flex flex-col items-center transition-all duration-500"
-        style={{
-          backgroundColor: `${currentInfo.color}15`,
-          borderColor: `${currentInfo.color}45`,
-          boxShadow: `0 10px 25px -8px ${currentInfo.color}35`,
-        }}
-      >
-        {/* 상단 현재 동물 소개 뱃지 */}
-        <div className="w-full flex items-center justify-between mb-1 px-1">
-          <span
-            className="text-[11px] font-bold px-2 py-0.5 rounded-full text-white shadow-xs transition-colors duration-300"
-            style={{ backgroundColor: currentInfo.color }}
+        {/* 3D 캔버스 영역 */}
+        <div className="my-3 flex flex-col items-center">
+          <div
+            className="h-56 w-full rounded-3xl border border-white/80 shadow-inner transition-colors duration-500"
+            style={{ backgroundColor: "#DCD6F766" }}
           >
-            {currentInfo.code} · {currentInfo.character.animal}
-          </span>
-          <span className="text-[11px] text-slate-400 font-medium flex items-center gap-1">
-            <span>⏱️</span> 3초마다 변신 중
-          </span>
+            <div className="relative h-full w-full cursor-grab active:cursor-grabbing">
+              <CharacterViewer typeCode={currentCode} />
+            </div>
+          </div>
+
+          {/* 동물 캐릭터 라벨 뱃지 */}
+          <div className="mt-2.5 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3.5 py-1 text-xs font-extrabold text-slate-700 shadow-2xs">
+            <span className="text-pink-600">{currentInfo.code}</span>
+            <span aria-hidden="true">·</span>
+            <span>
+              {currentInfo.character.name} ({currentInfo.character.animal})
+            </span>
+          </div>
         </div>
 
-        {/* 단 1개의 가벼운 3D 캔버스 영역 (휴대폰에서도 매끄럽게 구동) */}
-        <div className="w-full h-[220px] sm:h-[240px] relative rounded-2xl overflow-hidden">
-          <CharacterViewer typeCode={currentCode} />
+        {/* 검사 시작하기 큰 버튼 */}
+        <div className="mt-5">
+          <Link
+            href="/test"
+            className="flex w-full items-center justify-center gap-2.5 rounded-3xl bg-gradient-to-r from-pink-500 via-rose-500 to-pink-400 px-8 py-5 text-xl font-extrabold text-white shadow-[0_10px_26px_rgba(236,72,153,0.42)] hover:brightness-105 active:scale-[0.98] transition-all"
+          >
+            <span>검사 시작하기</span>
+            <span aria-hidden="true" className="text-2xl leading-none">
+              →
+            </span>
+          </Link>
         </div>
+      </section>
 
-        {/* 하단 캐릭터 이름 및 조작 팁 */}
-        <div className="mt-1 text-center">
-          <h2 className="text-sm sm:text-base font-extrabold text-slate-800">
-            {currentInfo.character.name}
-          </h2>
-          <span className="text-[10px] text-slate-400">
-            드래그해서 360도로 돌려보거나 탭해 보세요!
-          </span>
-        </div>
-      </div>
-
-      {/* 3. 특징 카드 3개 */}
-      <div className="w-full space-y-2.5 mb-5">
-        {/* 특징 카드 1 */}
-        <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-amber-50/70 border border-amber-100/80 shadow-xs">
-          <div className="w-10 h-10 rounded-xl bg-amber-200/60 flex items-center justify-center text-xl flex-shrink-0">
+      {/* 2. 서비스 특징 카드 3개 */}
+      <section aria-label="서비스 특징" className="flex flex-col gap-3">
+        {/* 특징 1 */}
+        <div className="flex items-start gap-3.5 rounded-2xl border p-4 shadow-[0_4px_14px_rgba(244,114,182,0.1)] backdrop-blur-xs bg-white/90 border-pink-200/80">
+          <div
+            aria-hidden="true"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-xl shadow-2xs bg-pink-100 text-pink-700"
+          >
             ⏱️
           </div>
-          <div className="text-left">
-            <h3 className="text-sm font-bold text-slate-800">12문항 · 2분</h3>
-            <p className="text-[11px] text-slate-500 mt-0.5">핵심 질문만 추려 빠르고 가볍게 검사해요</p>
+          <div className="flex flex-col text-left">
+            <h2 className="text-base font-extrabold text-slate-800">12문항 · 2분</h2>
+            <p className="mt-0.5 text-xs leading-relaxed text-slate-600 break-keep">
+              출퇴근길이나 쉬는 시간에 부담 없이 빠르게 답할 수 있어요.
+            </p>
           </div>
         </div>
 
-        {/* 특징 카드 2 */}
-        <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-rose-50/70 border border-rose-100/80 shadow-xs">
-          <div className="w-10 h-10 rounded-xl bg-rose-200/60 flex items-center justify-center text-xl flex-shrink-0">
+        {/* 특징 2 */}
+        <div className="flex items-start gap-3.5 rounded-2xl border p-4 shadow-[0_4px_14px_rgba(244,114,182,0.1)] backdrop-blur-xs bg-white/90 border-rose-200/80">
+          <div
+            aria-hidden="true"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-xl shadow-2xs bg-rose-100 text-rose-700"
+          >
             🧩
           </div>
-          <div className="text-left">
-            <h3 className="text-sm font-bold text-slate-800">16가지 유형</h3>
-            <p className="text-[11px] text-slate-500 mt-0.5">나의 숨겨진 성향과 성격을 16가지로 분석해요</p>
+          <div className="flex flex-col text-left">
+            <h2 className="text-base font-extrabold text-slate-800">16가지 유형</h2>
+            <p className="mt-0.5 text-xs leading-relaxed text-slate-600 break-keep">
+              나의 에너지 방향과 판단 기준을 조합해 16가지 성격 유형을 분석해요.
+            </p>
           </div>
         </div>
 
-        {/* 특징 카드 3 */}
-        <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-teal-50/70 border border-teal-100/80 shadow-xs">
-          <div className="w-10 h-10 rounded-xl bg-teal-200/60 flex items-center justify-center text-xl flex-shrink-0">
-            🦊
+        {/* 특징 3 */}
+        <div className="flex items-start gap-3.5 rounded-2xl border p-4 shadow-[0_4px_14px_rgba(244,114,182,0.1)] backdrop-blur-xs bg-white/90 border-fuchsia-200/80">
+          <div
+            aria-hidden="true"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-xl shadow-2xs bg-fuchsia-100 text-fuchsia-700"
+          >
+            🐾
           </div>
-          <div className="text-left">
-            <h3 className="text-sm font-bold text-slate-800">유형별 3D 캐릭터</h3>
-            <p className="text-[11px] text-slate-500 mt-0.5">유형마다 준비된 사랑스러운 동물 친구를 만나요</p>
+          <div className="flex flex-col text-left">
+            <h2 className="text-base font-extrabold text-slate-800">유형별 3D 캐릭터</h2>
+            <p className="mt-0.5 text-xs leading-relaxed text-slate-600 break-keep">
+              내 성격 유형과 꼭 닮은 귀여운 3D 동물 캐릭터를 만날 수 있어요.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* 4. 하단 검사 시작 버튼 및 안내 문구 */}
-      <div className="w-full space-y-3 pt-1 pb-1">
-        <Link
-          href="/test"
-          className="block w-full py-4 px-6 text-center text-lg font-extrabold text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 rounded-2xl shadow-xl shadow-emerald-400/30 active:scale-[0.98] transition-all tracking-wide"
-        >
-          검사 시작하기
-        </Link>
-
-        <p className="text-[11px] text-slate-400 tracking-tight">
+      {/* 3. 하단 저작권 / 간이 검사 고지 */}
+      <footer className="pt-2 pb-1 text-center">
+        <p className="text-[11px] leading-relaxed text-rose-400/90 break-keep">
           이 검사는 재미로 보는 간이 검사이며, 공식 MBTI® 검사가 아닙니다.
         </p>
-      </div>
+      </footer>
     </div>
   );
 }

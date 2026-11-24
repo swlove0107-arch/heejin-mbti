@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-/* 찌니 MBTI 전역 스타일: 밝고 부드러운 민트 파스텔 톤 배경 */
+/* 희진 MBTI 전역 스타일: 써니 MBTI 스타일의 따뜻하고 포근한 핑크·로즈 파스텔 톤 배경 */
 :root {
-  --background: #f2faf6;
+  --background: #fff5f8;
   --foreground: #1e293b;
 }
 

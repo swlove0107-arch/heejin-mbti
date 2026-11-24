@@ -28,7 +28,7 @@ function HeaderAuthMenu() {
       <div className="flex items-center gap-1">
         <Link
           href="/mypage"
-          className="text-[11px] sm:text-xs font-semibold px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full bg-emerald-500 text-white hover:bg-emerald-600 transition-all active:scale-95"
+          className="text-[11px] sm:text-xs font-bold px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full bg-pink-500 text-white hover:bg-pink-600 transition-all active:scale-95 shadow-2xs"
         >
           마이페이지
         </Link>
@@ -37,7 +37,7 @@ function HeaderAuthMenu() {
             await signOut();
             router.push("/");
           }}
-          className="text-[11px] sm:text-xs font-semibold px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all active:scale-95"
+          className="text-[11px] sm:text-xs font-bold px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full bg-white/80 text-slate-600 hover:bg-white transition-all active:scale-95 shadow-2xs"
         >
           로그아웃
         </button>
@@ -49,7 +49,7 @@ function HeaderAuthMenu() {
   return (
     <Link
       href="/login"
-      className="text-[11px] sm:text-xs font-semibold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all active:scale-95"
+      className="text-[11px] sm:text-xs font-bold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white/80 text-slate-600 hover:bg-white transition-all active:scale-95 shadow-2xs"
     >
       로그인
     </Link>
@@ -60,35 +60,42 @@ function HeaderAuthMenu() {
 export default function ClientLayout({ children }: { children: ReactNode }) {
   return (
     <AuthProvider>
-      {/* 전체 화면을 감싸는 모바일 규격 컨테이너: 최대 너비 480px */}
-      <div className="w-full max-w-[480px] min-h-screen bg-white/95 backdrop-blur-sm shadow-xl shadow-emerald-100/40 flex flex-col border-x border-emerald-100/60">
-        {/* 상단 헤더 */}
-        <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100/80 px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between">
-          {/* 왼쪽: 로고 */}
-          <Link
-            href="/"
-            className="text-base sm:text-lg font-extrabold tracking-tight text-emerald-600 hover:text-emerald-700 transition-colors flex items-center gap-1 shrink-0"
-          >
-            <span className="text-lg">🐾</span>
-            <span className="hidden min-[360px]:inline">찌니 MBTI</span>
-          </Link>
+      {/* 써니 MBTI 디자인의 컨테이너: 최대 너비 480px, 따뜻한 핑크-로즈 그라데이션 */}
+      <div className="w-full max-w-[480px] min-h-dvh flex flex-col bg-gradient-to-b from-[#fff5f8] via-[#ffecf2] to-[#ffe4ed] shadow-[0_8px_32px_rgba(236,72,153,0.12)] sm:border-x sm:border-pink-200/60">
+        {/* 상단 헤더: 블러 효과와 핑크빛 테두리 */}
+        <header className="sticky top-0 z-10 backdrop-blur-md bg-white/80 border-b border-pink-200/70 px-2.5 sm:px-4 py-3">
+          <div className="flex items-center justify-between gap-1">
+            {/* 왼쪽: 로고 (해님 ☀️ 뱃지 + 희진 MBTI) */}
+            <Link
+              href="/"
+              className="flex shrink-0 items-center gap-1 sm:gap-1.5 whitespace-nowrap text-[13px] sm:text-lg font-extrabold tracking-tight text-slate-800 hover:text-pink-600 transition-colors"
+            >
+              <span
+                aria-hidden="true"
+                className="inline-flex h-6 w-6 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-pink-200 to-rose-200 text-xs sm:text-base shadow-xs"
+              >
+                ☀️
+              </span>
+              <span>희진 MBTI</span>
+            </Link>
 
-          {/* 오른쪽 메뉴: 유형 도감, 통계, 로그인/마이페이지 */}
-          <nav className="flex items-center gap-1 sm:gap-1.5">
-            <Link
-              href="/types"
-              className="text-[11px] sm:text-xs font-semibold px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-all active:scale-95"
-            >
-              도감
-            </Link>
-            <Link
-              href="/stats"
-              className="text-[11px] sm:text-xs font-semibold px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-all active:scale-95"
-            >
-              통계
-            </Link>
-            <HeaderAuthMenu />
-          </nav>
+            {/* 오른쪽 메뉴: 유형 도감, 통계, 로그인/마이페이지 */}
+            <nav aria-label="주요 메뉴" className="flex items-center gap-1 sm:gap-1.5">
+              <Link
+                href="/types"
+                className="inline-flex items-center whitespace-nowrap rounded-full bg-pink-100 px-1.5 sm:px-2.5 py-1 sm:py-1.5 text-[11px] sm:text-xs font-bold text-pink-700 shadow-2xs hover:bg-pink-200/80 active:scale-95 transition-all"
+              >
+                유형 도감
+              </Link>
+              <Link
+                href="/stats"
+                className="inline-flex items-center whitespace-nowrap rounded-full bg-purple-100 px-1.5 sm:px-2.5 py-1 sm:py-1.5 text-[11px] sm:text-xs font-bold text-purple-700 shadow-2xs hover:bg-purple-200/80 active:scale-95 transition-all"
+              >
+                통계
+              </Link>
+              <HeaderAuthMenu />
+            </nav>
+          </div>
         </header>
 
         {/* 메인 본문 콘텐츠 영역 */}

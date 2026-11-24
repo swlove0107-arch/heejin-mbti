@@ -13,24 +13,24 @@ const notoSansKr = Noto_Sans_KR({
 // 웹 페이지의 기본 메타데이터 및 Open Graph 설정
 export const metadata: Metadata = {
   title: {
-    default: "찌니 MBTI - 16가지 동물 캐릭터 성격 유형 검사",
-    template: "%s | 찌니 MBTI",
+    default: "희진 MBTI | 3D 동물 캐릭터 성격 유형 검사",
+    template: "%s | 희진 MBTI",
   },
   description:
-    "12개 질문에 답하면 16가지 성격 유형 중 하나와 귀여운 3D 동물 캐릭터를 알려드려요!",
+    "12개 질문을 통과하면 나와 꼭 닮은 3D 동물 캐릭터와 16가지 성격 유형을 알려주는 희진 MBTI",
   openGraph: {
-    title: "찌니 MBTI - 16가지 동물 캐릭터 성격 유형 검사",
+    title: "희진 MBTI | 3D 동물 캐릭터 성격 유형 검사",
     description:
-      "12개 질문에 답하면 16가지 성격 유형 중 하나와 귀여운 3D 동물 캐릭터를 알려드려요!",
-    siteName: "찌니 MBTI",
+      "12개 질문을 통과하면 나와 꼭 닮은 3D 동물 캐릭터와 16가지 성격 유형을 알려주는 희진 MBTI",
+    siteName: "희진 MBTI",
     locale: "ko_KR",
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
-    title: "찌니 MBTI - 16가지 동물 캐릭터 성격 유형 검사",
+    card: "summary",
+    title: "희진 MBTI | 3D 동물 캐릭터 성격 유형 검사",
     description:
-      "12개 질문에 답하면 16가지 성격 유형 중 하나와 귀여운 3D 동물 캐릭터를 알려드려요!",
+      "12개 질문을 통과하면 나와 꼭 닮은 3D 동물 캐릭터와 16가지 성격 유형을 알려주는 희진 MBTI",
   },
 };
 
@@ -41,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={notoSansKr.className}>
-      <body className="min-h-screen bg-emerald-50/40 text-slate-800 antialiased flex flex-col items-center">
+      <body className="min-h-dvh bg-gradient-to-br from-pink-100/80 via-rose-50 to-pink-100/70 text-slate-800 flex justify-center">
         {/* ClientLayout 에 AuthProvider, 헤더, 메뉴가 모두 들어 있다 */}
         <ClientLayout>{children}</ClientLayout>
       </body>

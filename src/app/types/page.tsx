@@ -13,7 +13,7 @@ const TYPE_GRID = [
   ["ISTP", "ISFP", "ESTP", "ESFP"], // 4행: 감각·인식 (모험형)
 ];
 
-// 찌니 MBTI 유형 도감 화면 (/types)
+// 희진 MBTI 유형 도감 화면 (/types)
 export default function TypesPage() {
   // 현재 상단 3D 캔버스에 표시할 선택된 MBTI 유형 코드 상태 (기본값: ISFJ 곰)
   const [selectedCode, setSelectedCode] = useState<string>("ISFJ");
@@ -25,8 +25,8 @@ export default function TypesPage() {
     <div className="flex-1 flex flex-col items-center py-2">
       {/* 1. 상단 타이틀 */}
       <div className="w-full text-center mb-4">
-        <span className="px-3.5 py-1 text-xs font-semibold text-emerald-700 bg-emerald-100/70 rounded-full mb-2 inline-block">
-          찌니 3D 동물 도감
+        <span className="px-3.5 py-1 text-xs font-semibold text-pink-700 bg-pink-100/70 rounded-full mb-2 inline-block">
+          희진 3D 동물 도감
         </span>
         <h1 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight mb-1">
           유형 도감

@@ -155,8 +155,8 @@ export default function ResultContent({ info }: ResultContentProps) {
       {/* 4. 강점 목록 & 조심할 점 목록 */}
       <div className="w-full space-y-4 mb-6">
         {/* 강점 카드 */}
-        <div className="bg-white/90 border border-emerald-100/80 rounded-3xl p-5 shadow-sm">
-          <h4 className="text-xs font-bold text-emerald-700 flex items-center gap-1.5 mb-3">
+        <div className="bg-white/90 border border-pink-100/80 rounded-3xl p-5 shadow-sm">
+          <h4 className="text-xs font-bold text-pink-700 flex items-center gap-1.5 mb-3">
             <span>✨</span>
             <span>나만의 특별한 강점</span>
           </h4>
@@ -166,7 +166,7 @@ export default function ResultContent({ info }: ResultContentProps) {
                 key={idx}
                 className="text-xs sm:text-sm text-slate-700 flex items-start gap-2 break-keep"
               >
-                <span className="text-emerald-500 font-bold mt-0.5">•</span>
+                <span className="text-pink-500 font-bold mt-0.5">•</span>
                 <span>{strength}</span>
               </li>
             ))}
@@ -240,8 +240,8 @@ export default function ResultContent({ info }: ResultContentProps) {
           disabled={isSaved || isSaving}
           className={`w-full py-4 px-6 text-center text-sm sm:text-base font-bold rounded-2xl shadow-sm transition-all flex items-center justify-center gap-2 ${
             isSaved
-              ? "bg-emerald-50 text-emerald-700 border border-emerald-200 cursor-default"
-              : "bg-emerald-500 text-white hover:bg-emerald-600 shadow-emerald-400/30 shadow-md active:scale-[0.98]"
+              ? "bg-rose-50 text-rose-700 border border-rose-200 cursor-default"
+              : "bg-gradient-to-r from-pink-500 to-rose-500 text-white hover:from-pink-600 hover:to-rose-600 shadow-rose-300/40 shadow-md active:scale-[0.98]"
           } disabled:opacity-80`}
         >
           {isSaved ? (

@@ -90,7 +90,7 @@ export default function SignupPage() {
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center py-8">
-      <h1 className="text-2xl font-extrabold text-emerald-700 mb-8">회원가입</h1>
+      <h1 className="text-2xl font-extrabold text-pink-700 mb-8">회원가입</h1>
 
       <form onSubmit={handleSubmit} className="w-full max-w-xs flex flex-col gap-4">
         {/* 닉네임 */}
@@ -103,8 +103,8 @@ export default function SignupPage() {
             type="text"
             value={nickname}
             onChange={(e) => setNickname(e.target.value)}
-            placeholder="예: 찌니"
-            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 outline-none transition text-sm"
+            placeholder="예: 희진"
+            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition text-sm"
             required
           />
         </div>
@@ -120,7 +120,7 @@ export default function SignupPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="example@email.com"
-            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 outline-none transition text-sm"
+            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition text-sm"
             required
           />
         </div>
@@ -136,7 +136,7 @@ export default function SignupPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••"
-            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 outline-none transition text-sm"
+            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition text-sm"
             required
             minLength={6}
           />
@@ -153,7 +153,7 @@ export default function SignupPage() {
             value={passwordConfirm}
             onChange={(e) => setPasswordConfirm(e.target.value)}
             placeholder="••••••"
-            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 outline-none transition text-sm"
+            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition text-sm"
             required
             minLength={6}
           />
@@ -168,7 +168,7 @@ export default function SignupPage() {
 
         {/* 이메일 인증 안내 */}
         {info && (
-          <p className="text-sm text-emerald-600 font-medium bg-emerald-50 rounded-lg px-3 py-2">
+          <p className="text-sm text-pink-600 font-medium bg-pink-50 rounded-lg px-3 py-2">
             {info}
           </p>
         )}
@@ -177,7 +177,7 @@ export default function SignupPage() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 rounded-xl bg-emerald-500 text-white font-bold text-sm hover:bg-emerald-600 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-sm hover:from-pink-600 hover:to-rose-600 active:scale-[0.98] transition-all shadow-md shadow-pink-300/40 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading ? "처리 중..." : "가입하기"}
         </button>
@@ -186,7 +186,7 @@ export default function SignupPage() {
       {/* 로그인 페이지로 가는 링크 */}
       <p className="mt-6 text-sm text-slate-500">
         이미 회원이신가요?{" "}
-        <Link href="/login" className="text-emerald-600 font-semibold hover:underline">
+        <Link href="/login" className="text-pink-600 font-semibold hover:underline">
           로그인
         </Link>
       </p>

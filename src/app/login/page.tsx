@@ -73,7 +73,7 @@ function LoginForm() {
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center py-8">
-      <h1 className="text-2xl font-extrabold text-emerald-700 mb-8">로그인</h1>
+      <h1 className="text-2xl font-extrabold text-pink-700 mb-8">로그인</h1>
 
       <form onSubmit={handleSubmit} className="w-full max-w-xs flex flex-col gap-4">
         {/* 이메일 */}
@@ -87,7 +87,7 @@ function LoginForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="example@email.com"
-            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 outline-none transition text-sm"
+            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition text-sm"
             required
           />
         </div>
@@ -103,7 +103,7 @@ function LoginForm() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••"
-            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 outline-none transition text-sm"
+            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition text-sm"
             required
           />
         </div>
@@ -119,7 +119,7 @@ function LoginForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 rounded-xl bg-emerald-500 text-white font-bold text-sm hover:bg-emerald-600 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-sm hover:from-pink-600 hover:to-rose-600 active:scale-[0.98] transition-all shadow-md shadow-pink-300/40 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading ? "처리 중..." : "로그인"}
         </button>
@@ -128,7 +128,7 @@ function LoginForm() {
       {/* 회원가입 페이지 링크 */}
       <p className="mt-6 text-sm text-slate-500">
         아직 회원이 아니신가요?{" "}
-        <Link href="/signup" className="text-emerald-600 font-semibold hover:underline">
+        <Link href="/signup" className="text-pink-600 font-semibold hover:underline">
           회원가입
         </Link>
       </p>

@@ -113,12 +113,12 @@ export default function MyPage() {
   return (
     <div className="flex-1 flex flex-col items-center py-2">
       {/* 1. 상단 프로필 헤더 영역 */}
-      <div className="w-full bg-white/90 border border-emerald-100/80 rounded-3xl p-5 shadow-sm mb-6 text-center">
-        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 text-xl mb-3 shadow-inner">
+      <div className="w-full bg-white/90 border border-pink-100/80 rounded-3xl p-5 shadow-sm mb-6 text-center">
+        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-pink-100 text-pink-600 text-xl mb-3 shadow-inner">
           👤
         </div>
         <h1 className="text-xl font-extrabold text-slate-800 mb-1">
-          <span className="text-emerald-600">{nickname}</span> 님의 기록
+          <span className="text-pink-600">{nickname}</span> 님의 기록
         </h1>
         <p className="text-xs text-slate-400 font-medium">{user.email}</p>
       </div>
@@ -130,7 +130,7 @@ export default function MyPage() {
         </div>
       ) : results.length === 0 ? (
         // 결과가 아직 없는 경우
-        <div className="w-full bg-white/80 border border-dashed border-slate-200 rounded-3xl p-8 flex flex-col items-center text-center my-6">
+        <div className="w-full bg-white/80 border border-dashed border-pink-200/80 rounded-3xl p-8 flex flex-col items-center text-center my-6">
           <span className="text-4xl mb-3">🧭</span>
           <h3 className="text-base font-bold text-slate-700 mb-1">
             아직 저장한 결과가 없어요
@@ -140,7 +140,7 @@ export default function MyPage() {
           </p>
           <Link
             href="/test"
-            className="py-3 px-6 rounded-2xl bg-emerald-500 text-white font-bold text-sm hover:bg-emerald-600 shadow-md shadow-emerald-400/30 transition-all active:scale-95"
+            className="py-3 px-6 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-sm hover:from-pink-600 hover:to-rose-600 shadow-md shadow-pink-400/30 transition-all active:scale-95"
           >
             검사하러 가기
           </Link>
@@ -188,7 +188,7 @@ export default function MyPage() {
           <div className="w-full mb-6">
             <h2 className="text-sm font-extrabold text-slate-700 mb-3 flex items-center justify-between">
               <span>📋 검사 기록 목록</span>
-              <span className="text-xs font-semibold text-emerald-600">
+              <span className="text-xs font-semibold text-pink-600">
                 총 {results.length}개
               </span>
             </h2>
@@ -196,13 +196,13 @@ export default function MyPage() {
             <div className="space-y-2.5">
               {results.map((item) => {
                 const typeInfo = getTypeInfo(item.mbti_type);
-                const color = typeInfo?.color || "#10b981";
+                const color = typeInfo?.color || "#ec4899";
                 const nicknameStr = typeInfo?.nickname || "성격 유형";
 
                 return (
                   <div
                     key={item.id}
-                    className="w-full bg-white border border-slate-100 hover:border-emerald-200 rounded-2xl p-3.5 shadow-xs transition-all flex items-center justify-between gap-3"
+                    className="w-full bg-white border border-slate-100 hover:border-pink-200 rounded-2xl p-3.5 shadow-xs transition-all flex items-center justify-between gap-3"
                   >
                     {/* 클릭 시 결과 페이지로 이동하는 링크 영역 */}
                     <Link

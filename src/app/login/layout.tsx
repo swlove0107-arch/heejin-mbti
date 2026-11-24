@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "로그인",
-  description: "찌니 MBTI에 로그인하여 나만의 성격 유형 검사 결과를 안전하게 보관하세요.",
+  description: "희진 MBTI에 로그인하여 나만의 성격 유형 검사 결과를 안전하게 보관하세요.",
   openGraph: {
-    title: "로그인 | 찌니 MBTI",
-    description: "찌니 MBTI에 로그인하여 나만의 성격 유형 검사 결과를 안전하게 보관하세요.",
+    title: "로그인 | 희진 MBTI",
+    description: "희진 MBTI에 로그인하여 나만의 성격 유형 검사 결과를 안전하게 보관하세요.",
   },
 };
 

@@ -16,11 +16,11 @@ export default function NotFound() {
   return (
     <div className="flex-1 flex flex-col items-center justify-center text-center py-16 px-4">
       {/* 귀여운 길 잃은 동물 아이콘 */}
-      <div className="w-24 h-24 rounded-3xl bg-emerald-100/80 border border-emerald-200/60 flex items-center justify-center text-5xl mb-6 shadow-inner animate-pulse">
+      <div className="w-24 h-24 rounded-3xl bg-pink-100/80 border border-pink-200/60 flex items-center justify-center text-5xl mb-6 shadow-inner animate-pulse">
         🐾
       </div>
 
-      <span className="px-3.5 py-1 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/60 rounded-full mb-3">
+      <span className="px-3.5 py-1 text-xs font-bold text-pink-700 bg-pink-50 border border-pink-200/60 rounded-full mb-3">
         404 NOT FOUND
       </span>
 
@@ -36,7 +36,7 @@ export default function NotFound() {
       <div className="w-full max-w-xs space-y-3">
         <Link
           href="/"
-          className="block w-full py-3.5 px-6 text-center text-sm font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 rounded-2xl shadow-lg shadow-emerald-400/30 active:scale-[0.98] transition-all"
+          className="block w-full py-3.5 px-6 text-center text-sm font-bold text-white bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 rounded-2xl shadow-lg shadow-pink-400/30 active:scale-[0.98] transition-all"
         >
           홈으로 가기
         </Link>

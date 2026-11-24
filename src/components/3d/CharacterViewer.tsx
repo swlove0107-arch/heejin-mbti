@@ -23,7 +23,7 @@ export default function CharacterViewer({
 
   if (!mounted) {
     return (
-      <div className="w-full h-full min-h-[200px] flex flex-col items-center justify-center text-xs font-bold text-emerald-700/70 animate-pulse select-none">
+      <div className="w-full h-full min-h-[200px] flex flex-col items-center justify-center text-xs font-bold text-pink-600 animate-pulse select-none">
         <span className="text-3xl mb-2">🐾</span>
         <span>캐릭터 불러오는 중...</span>
       </div>

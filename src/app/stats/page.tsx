@@ -113,13 +113,13 @@ export default function StatsPage() {
     <div className="flex-1 flex flex-col items-center py-2">
       {/* 1. 상단 통계 헤더 영역 */}
       <div className="w-full text-center pt-2 mb-6">
-        <span className="px-3.5 py-1 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-full mb-3 inline-block">
+        <span className="px-3.5 py-1 text-xs font-semibold text-pink-700 bg-pink-100/80 border border-pink-200/80 rounded-full mb-3 inline-block">
           실시간 유형 통계
         </span>
         <h1 className="text-2xl font-black text-slate-800 tracking-tight mb-2">
           어떤 유형이 가장 많을까요?
         </h1>
-        <p className="text-sm font-semibold text-emerald-600">
+        <p className="text-sm font-semibold text-pink-600">
           {totalCount > 0
             ? `지금까지 ${totalCount.toLocaleString()}개의 결과가 모였어요!`
             : "아직 모인 결과가 없어요"}
@@ -128,7 +128,7 @@ export default function StatsPage() {
 
       {/* 2. 저장된 결과가 하나도 없을 때 안내 */}
       {totalCount === 0 ? (
-        <div className="w-full bg-white/80 border border-dashed border-slate-200 rounded-3xl p-8 flex flex-col items-center text-center my-6">
+        <div className="w-full bg-white/80 border border-dashed border-pink-200/80 rounded-3xl p-8 flex flex-col items-center text-center my-6">
           <span className="text-4xl mb-3">🌱</span>
           <h3 className="text-base font-bold text-slate-700 mb-1">
             아직 모인 결과가 없어요
@@ -138,7 +138,7 @@ export default function StatsPage() {
           </p>
           <Link
             href="/test"
-            className="py-3 px-6 rounded-2xl bg-emerald-500 text-white font-bold text-sm hover:bg-emerald-600 shadow-md shadow-emerald-400/30 transition-all active:scale-95"
+            className="py-3 px-6 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-sm hover:from-pink-600 hover:to-rose-600 shadow-md shadow-pink-400/30 transition-all active:scale-95"
           >
             검사하러 가기
           </Link>
@@ -177,7 +177,7 @@ export default function StatsPage() {
                 <p className="text-xs text-slate-500 mt-0.5 font-medium">
                   &ldquo;{topType.nickname}&rdquo;
                 </p>
-                <div className="mt-2 text-xs font-bold text-emerald-600 bg-white/80 px-3 py-1 rounded-full border border-emerald-100 inline-block">
+                <div className="mt-2 text-xs font-bold text-pink-600 bg-white/80 px-3 py-1 rounded-full border border-pink-100 inline-block">
                   총 {topType.count}명 ({topType.percentage.toFixed(1)}%)
                 </div>
               </div>
@@ -216,7 +216,7 @@ export default function StatsPage() {
                         >
                           {item.code}
                         </span>
-                        <span className="text-slate-600 font-medium truncate text-[11px] group-hover:text-emerald-600 transition-colors">
+                        <span className="text-slate-600 font-medium truncate text-[11px] group-hover:text-pink-600 transition-colors">
                           {item.characterName}
                         </span>
                       </div>
